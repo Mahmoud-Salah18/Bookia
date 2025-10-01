@@ -19,3 +19,12 @@ showErrorDialog(BuildContext context, String message) {
     ),
   );
 }
+
+showLoadingDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Center(child: CircularProgressIndicator());
+    },
+  );
+}

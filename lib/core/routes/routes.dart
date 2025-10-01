@@ -1,11 +1,19 @@
 import 'package:bookia/feature/auth/presentation/create_new_password/page/create_new_password_screen.dart';
+import 'package:bookia/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/feature/auth/presentation/forgot_password/page/forgot_password_screen.dart';
 import 'package:bookia/feature/auth/presentation/login/page/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/password_changed/page/password_changed_screen.dart';
 import 'package:bookia/feature/auth/presentation/register/page/register_screen.dart';
 import 'package:bookia/feature/auth/presentation/verifiction/page/verifiction_screen.dart';
+import 'package:bookia/feature/book_details/pages/book_details_screen.dart';
+import 'package:bookia/feature/cart/pages/cart_screen.dart';
+import 'package:bookia/feature/home/models/book_model.dart';
+import 'package:bookia/feature/home/pages/home_screen.dart';
+import 'package:bookia/feature/search/pages/search_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
+import 'package:bookia/feature/wishlist/pages/wishlist_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class Routes {
@@ -15,8 +23,13 @@ class Routes {
   static const String register = "/register";
   static const String forgotPassword = "/forgotPassword";
   static const String verification = "/verification";
-  static const String createNewPassword = "/CreateNewPassword";
-  static const String passwordChanged = "/PasswordChanged";
+  static const String createNewPassword = "/createNewPassword";
+  static const String passwordChanged = "/passwordChanged";
+  static const String home = "/home";
+  static const String search = "/search";
+  static const String bookDetails = "/bookDetails";
+  static const String wishlist = "/wishlist";
+  static const String cart = "/cart";
 
   static GoRouter routes = GoRouter(
     initialLocation: splash,
@@ -26,26 +39,55 @@ class Routes {
         path: welcome,
         builder: (context, state) => const WelcomeScreen(),
       ),
-      GoRoute(path: login, builder: (context, state) => const LoginScreen()),
+      GoRoute(
+        path: login,
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: LoginScreen(),
+        ),
+      ),
       GoRoute(
         path: register,
-        builder: (context, state) => const RegisterScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: const RegisterScreen(),
+        ),
       ),
       GoRoute(
         path: forgotPassword,
-        builder: (context, state) => const ForgotPasswordScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: const ForgotPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: verification,
-        builder: (context, state) => const VerificationScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: VerificationScreen(),
+        ),
       ),
       GoRoute(
         path: createNewPassword,
-        builder: (context, state) => const CreateNewPasswordScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: CreateNewPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: passwordChanged,
         builder: (context, state) => const PasswordChangedScreen(),
+      ),
+      GoRoute(path: home, builder: (context, state) => const HomeScreen()),
+      GoRoute(path: search, builder: (context, state) => SearchScreen()),
+      GoRoute(path: wishlist, builder: (context, state) => WishlistScreen()),
+      GoRoute(path: cart, builder: (context, state) => CartScreen()),
+      GoRoute(
+        path: bookDetails,
+        builder: (context, state) {
+          final model = state.extra as BookModel;
+          return BookDetailsScreen(model: model);
+        },
       ),
     ],
   );

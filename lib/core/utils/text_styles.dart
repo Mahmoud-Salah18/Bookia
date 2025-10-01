@@ -48,4 +48,12 @@ class TextStyles {
   }) {
     return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
+
+  static TextStyle styleSize12({
+    Color? color,
+    double fontSize = 12,
+    FontWeight fontWeight = FontWeight.normal,
+  }) {
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+  }
 }

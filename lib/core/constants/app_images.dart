@@ -4,7 +4,6 @@ class AppImages {
   static const String googleSvg = "assets/images/google_ic.svg";
   static const String successSvg = "assets/images/success.svg";
   static const String welcome = "assets/images/welcome.png";
-
   static const String backSvg = "assets/icons/back.svg";
   static const String bookmarkSvg = "assets/icons/bookmark.svg";
   static const String cameraSvg = "assets/icons/camera.svg";
@@ -14,4 +13,7 @@ class AppImages {
   static const String logoutSvg = "assets/icons/logout.svg";
   static const String profileSvg = "assets/icons/profile.svg";
   static const String searchSvg = "assets/icons/search.svg";
+  static const String appBar = "assets/images/appBar.svg";
+  static const String books = "assets/images/books.png";
+  static const String bookCart = "assets/images/bookCart.png";
 }

@@ -6,9 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class SocialLogin extends StatelessWidget {
-  const SocialLogin({
-    super.key,
-  });
+  const SocialLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +18,7 @@ class SocialLogin extends StatelessWidget {
             Gap(10),
             Text(
               "OR",
-              style: TextStyles.styleSize16(
-                color: AppColors.darkColor,
-              ),
+              style: TextStyles.styleSize16(color: AppColors.darkColor),
             ),
             Gap(10),
             Expanded(child: Divider()),
@@ -37,10 +33,7 @@ class SocialLogin extends StatelessWidget {
               image: AppImages.googleSvg,
               text: "Sign in with Google",
             ),
-            SocialButton(
-              image: AppImages.appleSvg,
-              text: "Sign in with Apple",
-            ),
+            SocialButton(image: AppImages.appleSvg, text: "Sign in with Apple"),
           ],
         ),
       ],
