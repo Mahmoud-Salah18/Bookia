@@ -1,6 +1,6 @@
 import 'package:bookia/components/app_bar/app_bar_with_back.dart';
 import 'package:bookia/components/buttons/main_button.dart';
-import 'package:bookia/components/inputs/custom_text_field.dart';
+import 'package:bookia/components/inputs/password_text_field.dart';
 import 'package:bookia/core/functions/dialogs.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/routes.dart';
@@ -54,7 +54,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                   style: TextStyles.styleSize16(color: AppColors.greyColor),
                 ),
                 Gap(30),
-                CustomTextField(
+                PasswordTextField(
                   controller: cubit.newPasswordController,
                   hint: "New Password",
                   validator: (value) {
@@ -65,7 +65,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                   },
                 ),
                 Gap(15),
-                CustomTextField(
+                PasswordTextField(
                   controller: cubit.confirmPasswordController,
                   hint: "Confirm Password",
                   validator: (value) {

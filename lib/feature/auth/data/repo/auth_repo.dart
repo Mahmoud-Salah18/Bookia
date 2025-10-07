@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bookia/core/services/dio/api_endpoints.dart';
 import 'package:bookia/core/services/dio/dio_provider.dart';
+import 'package:bookia/core/services/local/shared_pref.dart';
 import 'package:bookia/feature/auth/data/models/auth_params.dart';
 import 'package:bookia/feature/auth/data/models/auth_response/auth_response.dart';
 
@@ -14,7 +15,9 @@ class AuthRepo {
       );
       if (res.statusCode == 201) {
         var body = res.data;
-        return AuthResponse.fromJson(body);
+        var userObject = AuthResponse.fromJson(body);
+        SharedPref.saveUserData(userObject.data);
+        return userObject;
       } else {
         return null;
       }
@@ -32,7 +35,9 @@ class AuthRepo {
       );
       if (res.statusCode == 200) {
         var body = res.data;
-        return AuthResponse.fromJson(body);
+        var userObject = AuthResponse.fromJson(body);
+        SharedPref.saveUserData(userObject.data);
+        return userObject;
       } else {
         return null;
       }

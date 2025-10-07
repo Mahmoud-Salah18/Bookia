@@ -1,12 +1,14 @@
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
-import 'package:bookia/feature/home/models/book_model.dart';
-import 'package:bookia/feature/home/widgets/book_cart.dart';
+import 'package:bookia/feature/home/data/models/best_seller_response/product.dart';
+import 'package:bookia/feature/home/presentation/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class BestSellerBuilder extends StatelessWidget {
-  const BestSellerBuilder({super.key});
+  const BestSellerBuilder({super.key, required this.books});
+
+  final List<Product> books;
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +19,21 @@ class BestSellerBuilder extends StatelessWidget {
           "Best Seller",
           style: TextStyles.styleSize24(color: AppColors.darkColor),
         ),
-        Gap(16),
+        Gap(15),
         GridView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
             mainAxisExtent: 300,
           ),
           itemCount: books.length,
-          itemBuilder: (context, index) => BookCart(model: books[index]),
+          itemBuilder: (context, index) {
+            books[0];
+            return BookCard(book: books[index]);
+          },
         ),
       ],
     );

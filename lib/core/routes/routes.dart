@@ -5,14 +5,13 @@ import 'package:bookia/feature/auth/presentation/login/page/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/password_changed/page/password_changed_screen.dart';
 import 'package:bookia/feature/auth/presentation/register/page/register_screen.dart';
 import 'package:bookia/feature/auth/presentation/verifiction/page/verifiction_screen.dart';
-import 'package:bookia/feature/book_details/pages/book_details_screen.dart';
-import 'package:bookia/feature/cart/pages/cart_screen.dart';
-import 'package:bookia/feature/home/models/book_model.dart';
-import 'package:bookia/feature/home/pages/home_screen.dart';
+import 'package:bookia/feature/home/data/models/best_seller_response/product.dart';
+import 'package:bookia/feature/home/presentation/page/details_screen.dart';
+import 'package:bookia/feature/home/presentation/page/home_screen.dart';
+import 'package:bookia/feature/main/main_app_screen.dart';
 import 'package:bookia/feature/search/pages/search_screen.dart';
 import 'package:bookia/feature/splash/splash_screen.dart';
 import 'package:bookia/feature/welcome/welcome_screen.dart';
-import 'package:bookia/feature/wishlist/pages/wishlist_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,9 +26,10 @@ class Routes {
   static const String passwordChanged = "/passwordChanged";
   static const String home = "/home";
   static const String search = "/search";
-  static const String bookDetails = "/bookDetails";
+  static const String details = "/details";
   static const String wishlist = "/wishlist";
   static const String cart = "/cart";
+  static const String main = "/main";
 
   static GoRouter routes = GoRouter(
     initialLocation: splash,
@@ -78,15 +78,14 @@ class Routes {
         path: passwordChanged,
         builder: (context, state) => const PasswordChangedScreen(),
       ),
+      GoRoute(path: main, builder: (context, state) => const MainAppScreen()),
       GoRoute(path: home, builder: (context, state) => const HomeScreen()),
       GoRoute(path: search, builder: (context, state) => SearchScreen()),
-      GoRoute(path: wishlist, builder: (context, state) => WishlistScreen()),
-      GoRoute(path: cart, builder: (context, state) => CartScreen()),
       GoRoute(
-        path: bookDetails,
+        path: details,
         builder: (context, state) {
-          final model = state.extra as BookModel;
-          return BookDetailsScreen(model: model);
+          var book = state.extra as Product;
+          return DetailsScreen(book: book);
         },
       ),
     ],

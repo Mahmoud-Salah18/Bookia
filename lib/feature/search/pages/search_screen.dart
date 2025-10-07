@@ -1,8 +1,6 @@
 import 'package:bookia/components/app_bar/app_bar_with_back.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
 import 'package:bookia/core/utils/colors.dart';
-import 'package:bookia/feature/home/models/book_model.dart';
-import 'package:bookia/feature/home/widgets/book_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -33,19 +31,19 @@ class SearchScreen extends StatelessWidget {
               ),
             ),
             Gap(20),
-            Expanded(
-              child: GridView.builder(
-                physics: const BouncingScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  mainAxisExtent: 300,
-                ),
-                itemCount: books.length,
-                itemBuilder: (context, index) => BookCart(model: books[index]),
-              ),
-            ),
+            // Expanded(
+            //   child: GridView.builder(
+            //     physics: const BouncingScrollPhysics(),
+            //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2,
+            //       mainAxisSpacing: 12,
+            //       crossAxisSpacing: 12,
+            //       mainAxisExtent: 300,
+            //     ),
+            //     itemCount: books.length,
+            // //    itemBuilder: (context, index) => BookCart(model: books[index]),
+            //   ),
+            // ),
           ],
         ),
       ),

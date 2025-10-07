@@ -5,4 +5,6 @@ class ApiEndpoints {
   static const forgetPassword = "$baseUrl/forget-password";
   static const checkForgetPassword = "$baseUrl/check-forget-password";
   static const resetPassword = "$baseUrl/reset-password";
+  static const productsBestSeller = "$baseUrl/products-bestseller";
+  static const sliders = "$baseUrl/sliders";
 }

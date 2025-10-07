@@ -119,8 +119,7 @@ class VerificationScreen extends StatelessWidget {
                   text: "Verify",
                   onPressed: () {
                     if (cubit.formKey.currentState!.validate()) {
-                      cubit.verifyCodeController.text =
-                          _otpController.text;
+                      cubit.verifyCodeController.text = _otpController.text;
                       cubit.checkForgetPassword();
                     }
                   },
