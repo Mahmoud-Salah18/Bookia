@@ -2,7 +2,6 @@ import 'package:bookia/components/app_bar/app_bar_with_back.dart';
 import 'package:bookia/components/buttons/main_button.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
 import 'package:bookia/components/inputs/password_text_field.dart';
-import 'package:bookia/core/constants/app_images.dart';
 import 'package:bookia/core/functions/dialogs.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/routes.dart';
@@ -13,7 +12,6 @@ import 'package:bookia/feature/auth/presentation/cubit/auth_state.dart';
 import 'package:bookia/feature/auth/presentation/login/widgets/social_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -52,7 +50,7 @@ class LoginScreen extends StatelessWidget {
           goToBase(context, Routes.main);
         } else if (state is AuthErrorState) {
           pop(context);
-          showErrorDialog(context, state.message);
+          showMyDialog(context, state.message);
         }
       },
       child: Padding(

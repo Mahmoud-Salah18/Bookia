@@ -32,7 +32,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
           pushWithReplacement(context, Routes.passwordChanged);
         } else if (state is AuthErrorState) {
           pop(context);
-          showErrorDialog(context, state.message);
+          showMyDialog(context, state.message);
         }
       },
       child: Padding(

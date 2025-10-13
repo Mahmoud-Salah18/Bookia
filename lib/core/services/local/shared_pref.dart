@@ -7,6 +7,7 @@ class SharedPref {
   static late SharedPreferences pref;
 
   static const String kUserData = "userData";
+  static const String kWishlist = "wishlist";
 
   static init() async {
     pref = await SharedPreferences.getInstance();
@@ -28,6 +29,24 @@ class SharedPref {
 
     var stringToJson = jsonDecode(stringData);
     return UserModel.fromJson(stringToJson);
+  }
+
+  static saveWishlist(List<int> wishlistIds) {
+    List<String> listOfStrings = [];
+    for (var id in wishlistIds) {
+      listOfStrings.add(id.toString());
+    }
+    saveData(kWishlist, listOfStrings);
+  }
+
+  static List<int>? getWishlist() {
+    List<String>? listOfStrings = getData(kWishlist);
+    if (listOfStrings == null) return null;
+    List<int> listOfInts = [];
+    for (var id in listOfStrings) {
+      listOfInts.add(int.tryParse(id) ?? 0);
+    }
+    return listOfInts;
   }
 
   static saveData(String key, dynamic value) {

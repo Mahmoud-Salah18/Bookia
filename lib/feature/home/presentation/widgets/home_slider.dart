@@ -29,7 +29,7 @@ class _HomeSliderState extends State<HomeSlider> {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: CachedNetworkImage(
-                    imageUrl: widget.sliders[itemIndex].image ?? "" ,
+                    imageUrl: widget.sliders[itemIndex].image ?? "",
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -41,7 +41,7 @@ class _HomeSliderState extends State<HomeSlider> {
             initialPage: 0,
             enableInfiniteScroll: true,
             reverse: false,
-            autoPlay: false,
+            autoPlay: true,
             autoPlayInterval: Duration(seconds: 3),
             autoPlayAnimationDuration: Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastOutSlowIn,

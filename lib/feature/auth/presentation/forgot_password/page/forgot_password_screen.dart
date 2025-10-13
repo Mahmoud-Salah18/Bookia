@@ -49,7 +49,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           pushWithReplacement(context, Routes.verification);
         } else if (state is AuthErrorState) {
           pop(context);
-          showErrorDialog(context, state.message);
+          showMyDialog(context, state.message);
         }
       },
       child: Padding(

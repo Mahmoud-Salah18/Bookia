@@ -6,6 +6,7 @@ import 'package:bookia/feature/auth/presentation/password_changed/page/password_
 import 'package:bookia/feature/auth/presentation/register/page/register_screen.dart';
 import 'package:bookia/feature/auth/presentation/verifiction/page/verifiction_screen.dart';
 import 'package:bookia/feature/home/data/models/best_seller_response/product.dart';
+import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/page/details_screen.dart';
 import 'package:bookia/feature/home/presentation/page/home_screen.dart';
 import 'package:bookia/feature/main/main_app_screen.dart';
@@ -27,7 +28,6 @@ class Routes {
   static const String home = "/home";
   static const String search = "/search";
   static const String details = "/details";
-  static const String wishlist = "/wishlist";
   static const String cart = "/cart";
   static const String main = "/main";
 
@@ -85,7 +85,10 @@ class Routes {
         path: details,
         builder: (context, state) {
           var book = state.extra as Product;
-          return DetailsScreen(book: book);
+          return BlocProvider(
+            create: (context) => HomeCubit(),
+            child: DetailsScreen(book: book),
+          );
         },
       ),
     ],
