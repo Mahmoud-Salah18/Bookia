@@ -4,6 +4,7 @@ import 'package:bookia/core/services/dio/api_endpoints.dart';
 import 'package:bookia/core/services/dio/dio_provider.dart';
 import 'package:bookia/core/services/local/shared_pref.dart';
 import 'package:bookia/feature/cart/data/models/cart_response/cart_response.dart';
+import 'package:bookia/feature/cart/data/models/place_order_params.dart';
 
 class CartRepo {
   static Future<CartResponse?> getCart() async {
@@ -81,6 +82,24 @@ class CartRepo {
     } on Exception catch (e) {
       log(e.toString());
       return null;
+    }
+  }
+
+  static Future<bool?> placeOrder(PlaceOrderParams params) async {
+    try {
+      var res = await DioProvider.post(
+        path: ApiEndpoints.placeOrder,
+        data: params.toJson(),
+        headers: {"Authorization": "Bearer ${SharedPref.getUserData()?.token}"},
+      );
+      if (res.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return false;
     }
   }
 }

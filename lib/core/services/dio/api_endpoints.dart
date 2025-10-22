@@ -18,4 +18,5 @@ class ApiEndpoints {
   static const addToCart = "$baseUrl/add-to-cart";
   static const removeFromCart = "$baseUrl/remove-from-cart";
   static const updateCart = "$baseUrl/update-cart";
+  static const placeOrder = "$baseUrl/place-order";
 }

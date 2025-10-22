@@ -5,6 +5,8 @@ import 'package:bookia/feature/auth/presentation/login/page/login_screen.dart';
 import 'package:bookia/feature/auth/presentation/password_changed/page/password_changed_screen.dart';
 import 'package:bookia/feature/auth/presentation/register/page/register_screen.dart';
 import 'package:bookia/feature/auth/presentation/verifiction/page/verifiction_screen.dart';
+import 'package:bookia/feature/cart/presentation/cubit/cart_cubit.dart';
+import 'package:bookia/feature/cart/presentation/pages/place_order_screen.dart';
 import 'package:bookia/feature/home/data/models/best_seller_response/product.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/feature/home/presentation/page/details_screen.dart';
@@ -30,6 +32,7 @@ class Routes {
   static const String details = "/details";
   static const String cart = "/cart";
   static const String main = "/main";
+  static const String placeOrder = "/placeOrder";
 
   static GoRouter routes = GoRouter(
     initialLocation: splash,
@@ -78,7 +81,10 @@ class Routes {
         path: passwordChanged,
         builder: (context, state) => const PasswordChangedScreen(),
       ),
-      GoRoute(path: main, builder: (context, state) => const MainAppScreen()),
+      GoRoute(
+        path: main,
+        builder: (context, state) => MainAppScreen(index: state.extra as int?),
+      ),
       GoRoute(path: home, builder: (context, state) => const HomeScreen()),
       GoRoute(path: search, builder: (context, state) => SearchScreen()),
       GoRoute(
@@ -88,6 +94,15 @@ class Routes {
           return BlocProvider(
             create: (context) => HomeCubit(),
             child: DetailsScreen(book: book),
+          );
+        },
+      ),
+      GoRoute(
+        path: placeOrder,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => CartCubit()..prefillOrderData(),
+            child: PlaceOrderScreen(total: state.extra as String),
           );
         },
       ),
